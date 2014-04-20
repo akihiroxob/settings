@@ -1,0 +1,162 @@
+set encoding=utf-8
+
+set number
+set backspace=2
+set laststatus=2
+setlocal omnifunc=syntaxcomplete#Complete
+
+set showmatch
+set nowrapscan
+
+set tabstop=4
+set expandtab
+set smarttab
+set shiftwidth=4
+set shiftround
+set nowrap
+
+set noautoindent
+autocmd FileType * setlocal formatoptions-=ro
+set formatoptions-=ro
+
+highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
+"call matchadd("ZenkakuSpace", '\%u3000')
+match ZenkakuSpace /　/
+
+"highlight Defines cterm=italic gui=italic
+
+set hlsearch
+set incsearch
+set wrapscan
+
+"Tab、行末の半角スペースを明示的に表示する。
+set list
+set listchars=tab:^\ ,trail:_
+
+" LEADERを設定しておく
+
+syntax on
+"call pathogen#infect()
+
+nmap <Space><Right> :vs<CR>
+nmap <Space><Down>  :sp<CR>
+nmap <Space>` :nohlsearch<CR><Esc>
+
+"set showtabline=2
+nmap <Tab>          :tabnext<CR>
+nmap <BackSpace>    :tabprevious<CR>
+nmap tt             :tabnew<CR>
+nmap t<Delete>      :tabclose<CR>
+nmap t<BackSpace>   :tabclose<CR>
+
+"
+autocmd FileType vim :set dictionary+=~/.vim/dict/vim_functions.dict
+autocmd FileType php :set dictionary+=~/.vim/dict/php_functions.dict
+set complete+=k
+
+" 改行コードの自動認識
+set fileformats=unix,dos,mac
+" □とか○の文字があってもカーソル位置がずれないようにする
+if exists('&ambiwidth')
+  set ambiwidth=double
+endif
+
+""
+""
+""
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+let g:vundle_default_git_proto='git'
+
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+
+
+" unite
+
+Bundle 'tpope/vim-fugitive'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+Bundle 'tpope/vim-rails.git'
+"Bundle 'mattn/zencoding-vim'
+Bundle 'mattn/emmet-vim'
+
+" vim-scripts repos
+Bundle 'L9'
+Bundle 'FuzzyFinder'
+Bundle 'vim-scripts/AutoComplPop'
+
+" non-GitHub repos
+Bundle 'git://git.wincent.com/command-t.git'
+
+Bundle 'thinca/vim-quickrun'
+Bundle 'vim-scripts/sudo.vim'
+Bundle 'tpope/vim-pathogen'
+Bundle 'scrooloose/syntastic'
+Bundle 'itchyny/lightline.vim'
+
+" open browser
+Bundle 'tyru/open-browser.vim'
+" カーソル下のURLをブラウザで開く
+nmap <Leader>o <Plug>(openbrowser-open)
+vmap <Leader>o <Plug>(openbrowser-open)
+nnoremap <Leader>g :<C-u>OpenBrowserSearch<Space><C-r><C-w><Enter>
+
+" Markdown
+Bundle 'kannokanno/previm'
+"let g:previm_open_cmd = 'open -a Firefox'
+"md as markdown {{{
+autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+autocmd FileType markdown call s:markdown_my_settings()
+function! s:markdown_my_settings()
+    nnoremap <silent><buffer>  <Leader>r :PrevimOpen<CR>
+endfunction
+"}}}
+
+" colorscheme
+Bundle 'nanotech/jellybeans.vim'
+Bundle 'tomasr/molokai'
+Bundle 'vim-scripts/Zenburn'
+
+set t_Co=256
+"colorscheme zenburn
+"colorscheme desert
+colorscheme molokai
+
+Bundle 'Shougo/unite.vim'
+Bundle 'ujihisa/unite-colorscheme'
+Bundle 'thinca/vim-unite-history'
+Bundle 'taka84u9/unite-git'
+"" unite.vim {{{
+" The prefix key.
+nnoremap    [unite]   <Nop>
+nmap    <Space><Space> [unite]
+
+" unite.vim keymap
+nnoremap <silent> [unite]f :<C-u>Unite<Space>buffer<Space>file_mru<CR>
+nnoremap <silent> [unite]d :<C-u>UniteWithBufferDir file<CR>
+nnoremap <silent> [unite]r :UniteResume<CR>
+
+" history
+nnoremap <silent> [unite]hs :Unite history/search<CR>
+nnoremap <silent> [unite]hy :Unite history/yank<CR>
+nnoremap <silent> [unite]hc :Unite history/command<CR>
+
+" git
+nnoremap <silent> [unite]gm :Unite git_modified<CR>
+nnoremap <silent> [unite]gc :Unite git_cached<CR>
+
+" vinarise
+let g:vinarise_enable_auto_detect = 1
+ 
+" unite-build map
+nnoremap <silent> ,vb :Unite build<CR>
+nnoremap <silent> ,vcb :Unite build:!<CR>
+nnoremap <silent> ,vch :UniteBuildClearHighlight<CR>
+"" }}}
+
+filetype plugin indent on

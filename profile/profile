@@ -1,0 +1,19 @@
+# configulation
+export SVN_EDITOR=vim
+
+PATH=$HOME/bin:${PATH}
+
+PS1="[\u@\h:\W]$ "
+if [ "$SHELL" = "/usr/local/bin/zsh" ]; then
+    PS1="[%n@%m:%1~]$ "
+fi
+
+## command alias
+if [ -f $HOME/.command_alias ]; then
+    source $HOME/.command_alias
+fi
+
+## ServerAlias
+if [ -f $HOME/.server_alias ]; then
+    source $HOME/.server_alias
+fi

@@ -1,0 +1,19 @@
+## alias
+alias c='clear'
+alias grep='grep --color'
+
+## lsに--colorオプションが無い時があるので
+ls --color > /dev/null 2>&1
+if [ $? -eq 0 ]; then
+	alias ls='ls --color'
+else
+	alias ls='ls -G'
+fi
+
+function f {
+  if [ "$1" != "" ]; then
+    find . -name "*$1*";
+  else
+    echo "usage: f filename" 1>&2
+ fi
+}
