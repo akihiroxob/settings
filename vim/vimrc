@@ -1,5 +1,6 @@
 set encoding=utf-8
 
+set ambiwidth=double
 set number
 set backspace=2
 set laststatus=2
@@ -77,12 +78,11 @@ Bundle 'gmarik/vundle'
 
 
 " unite
-
 Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'tpope/vim-rails.git'
-"Bundle 'mattn/zencoding-vim'
+Bundle "elixir-lang/vim-elixir"
 Bundle 'mattn/emmet-vim'
 
 " vim-scripts repos
@@ -96,8 +96,18 @@ Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'thinca/vim-quickrun'
 Bundle 'vim-scripts/sudo.vim'
 Bundle 'tpope/vim-pathogen'
-Bundle 'scrooloose/syntastic'
 Bundle 'itchyny/lightline.vim'
+
+" syntax
+Bundle 'scrooloose/syntastic'
+let g:syntastic_javascript_checkers=['eslint']
+Bundle 'wavded/vim-stylus'
+Bundle 'digitaltoad/vim-jade'
+Bundle "pangloss/vim-javascript"
+Bundle "mxw/vim-jsx"
+
+" for Python
+Bundle 'jmcantrell/vim-virtualenv'
 
 " open browser
 Bundle 'tyru/open-browser.vim'
@@ -126,6 +136,7 @@ set t_Co=256
 "colorscheme zenburn
 "colorscheme desert
 colorscheme molokai
+hi Visual term=reverse cterm=reverse guibg=Grey
 
 Bundle 'Shougo/unite.vim'
 Bundle 'ujihisa/unite-colorscheme'
