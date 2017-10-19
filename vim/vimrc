@@ -15,6 +15,8 @@ set smarttab
 set shiftwidth=4
 set shiftround
 set nowrap
+set cursorline
+set ruler
 
 set noautoindent
 autocmd FileType * setlocal formatoptions-=ro
@@ -38,6 +40,7 @@ set listchars=tab:^\ ,trail:_
 
 syntax on
 "call pathogen#infect()
+nmap <C-]> :tselect<CR>
 
 nmap <Space><Right> :vs<CR>
 nmap <Space><Down>  :sp<CR>
@@ -76,13 +79,12 @@ let g:vundle_default_git_proto='git'
 " required!
 Bundle 'gmarik/vundle'
 
-
 " unite
 Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'tpope/vim-rails.git'
-Bundle "elixir-lang/vim-elixir"
+
+" ZenCoding
 Bundle 'mattn/emmet-vim'
 
 " vim-scripts repos
@@ -90,13 +92,17 @@ Bundle 'L9'
 Bundle 'FuzzyFinder'
 Bundle 'vim-scripts/AutoComplPop'
 
-" non-GitHub repos
-Bundle 'git://git.wincent.com/command-t.git'
-
+Bundle 'wincent/Command-T'
 Bundle 'thinca/vim-quickrun'
 Bundle 'vim-scripts/sudo.vim'
 Bundle 'tpope/vim-pathogen'
 Bundle 'itchyny/lightline.vim'
+
+" Tagber
+Bundle 'majutsushi/tagbar.git'
+nmap <C-t> :TagbarToggle<CR>
+Bundle 'scrooloose/nerdtree'
+nmap <silent> <C-e> :NERDTreeToggle<CR>
 
 " syntax
 Bundle 'scrooloose/syntastic'
@@ -105,6 +111,9 @@ Bundle 'wavded/vim-stylus'
 Bundle 'digitaltoad/vim-jade'
 Bundle "pangloss/vim-javascript"
 Bundle "mxw/vim-jsx"
+Bundle 'derekwyatt/vim-scala'
+Bundle 'tpope/vim-rails.git'
+Bundle 'elixir-lang/vim-elixir'
 
 " for Python
 Bundle 'jmcantrell/vim-virtualenv'
