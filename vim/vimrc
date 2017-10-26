@@ -44,7 +44,7 @@ nmap <C-]> :tselect<CR>
 
 nmap <Space><Right> :vs<CR>
 nmap <Space><Down>  :sp<CR>
-nmap <Space>` :nohlsearch<CR><Esc>
+nmap <Space>` :nohlsearch<CR>:SyntasticReset<CR><Esc>
 
 "set showtabline=2
 nmap <Tab>          :tabnext<CR>
@@ -106,7 +106,22 @@ nmap <silent> <C-e> :NERDTreeToggle<CR>
 
 " syntax
 Bundle 'scrooloose/syntastic'
-let g:syntastic_javascript_checkers=['eslint']
+au BufRead,BufNewFile *.scss set filetype=sass
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_markdown_checkers = ['textlint']
+let g:syntastic_text_checkers = ['textlint']
+
+
+" syntax
 Bundle 'wavded/vim-stylus'
 Bundle 'digitaltoad/vim-jade'
 Bundle "pangloss/vim-javascript"
@@ -129,11 +144,11 @@ nnoremap <Leader>g :<C-u>OpenBrowserSearch<Space><C-r><C-w><Enter>
 Bundle 'kannokanno/previm'
 "let g:previm_open_cmd = 'open -a Firefox'
 "md as markdown {{{
-autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
-autocmd FileType markdown call s:markdown_my_settings()
-function! s:markdown_my_settings()
-    nnoremap <silent><buffer>  <Leader>r :PrevimOpen<CR>
-endfunction
+"autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+"autocmd FileType markdown call s:markdown_my_settings()
+"function! s:markdown_my_settings()
+"    nnoremap <silent><buffer>  <Leader>r :PrevimOpen<CR>
+"endfunction
 "}}}
 
 " colorscheme
@@ -158,7 +173,7 @@ nmap    <Space><Space> [unite]
 
 " unite.vim keymap
 nnoremap <silent> [unite]f :<C-u>Unite<Space>buffer<Space>file_mru<CR>
-nnoremap <silent> [unite]d :<C-u>UniteWithBufferDir file<CR>
+"nnoremap <silent> [unite]d :<C-u>UniteWithBufferDir file<CR>
 nnoremap <silent> [unite]r :UniteResume<CR>
 
 " history

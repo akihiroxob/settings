@@ -1,0 +1,7 @@
+{
+    "rules": {
+        "textlint-rule-ginger": true,
+        "textlint-rule-spellchecker": true,
+        "textlint-rule-write-good": true
+    }
+}

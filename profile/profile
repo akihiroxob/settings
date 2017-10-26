@@ -1,12 +1,13 @@
 # configulation
 export SVN_EDITOR=vim
 export DOCKER_HOST=tcp://localhost:4243
-export PATH=$HOME/bin:${PATH}
+export PATH=$HOME/bin:$HOME/bin/android-tools:${PATH}
 export PATH=$HOME/.nodebrew/current/bin:${PATH}
 #export NODEBREW_ROOT=/usr/local/var/nodebrew
 #export PATH=$NODEBREW_ROOT/current/bin:$PATH
 export PATH=/usr/local/sbin:${PATH}
 export LC_ALL=ja_JP.UTF-8
+export HOMEBREW_GITHUB_API_TOKEN="437b12338eaf10ec8124c70d557249688ad3870b"
 
 PS1="[\u@\h:\W]$ "
 if [ "$SHELL" = "/usr/local/bin/zsh" ]; then
