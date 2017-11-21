@@ -8,6 +8,11 @@ echo 'setup profile...';
 ln -s $PWD/profile/command_alias ~/.command_alias
 ln -s $PWD/profile/profile ~/.profile
 
+### screenrc
+echo 'setup screenrc...';
+mkdir ~/.screentmp
+ln -s $PWD/screen/screenrc ~/.screenrc
+
 ### vimrc
 echo 'setup vimrc...';
 $PWD/vim/InstallVundle
