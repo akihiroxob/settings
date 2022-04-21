@@ -1,4 +1,97 @@
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" let g:vundle_default_git_proto='git'
+
+" let Vundle manage Vundle
+" required!
+" Plugin 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
+
+" ZenCoding
+Plugin 'mattn/emmet-vim'
+
+" vim-scripts repos
+Plugin 'L9'
+Plugin 'FuzzyFinder'
+Plugin 'vim-scripts/AutoComplPop'
+
+Plugin 'wincent/Command-T'
+Plugin 'thinca/vim-quickrun'
+Plugin 'vim-scripts/sudo.vim'
+Plugin 'tpope/vim-pathogen'
+Plugin 'itchyny/lightline.vim'
+
+" Tagber
+Plugin 'majutsushi/tagbar.git'
+nmap <C-t> :TagbarToggle<CR>
+Plugin 'scrooloose/nerdtree'
+nmap <silent> <C-e> :NERDTreeToggle<CR>
+
+" syntax
+Plugin 'scrooloose/syntastic'
+au BufRead,BufNewFile *.scss set filetype=sass
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_markdown_checkers = ['textlint']
+let g:syntastic_text_checkers = ['textlint']
+
+
+" syntax
+Plugin 'wavded/vim-stylus'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'tpope/vim-rails.git'
+Plugin 'elixir-lang/vim-elixir'
+
+" for Python
+Plugin 'jmcantrell/vim-virtualenv'
+
+" open browser
+Plugin 'tyru/open-browser.vim'
+" カーソル下のURLをブラウザで開く
+nmap <Leader>o <Plug>(openbrowser-open)
+vmap <Leader>o <Plug>(openbrowser-open)
+nnoremap <Leader>g :<C-u>OpenBrowserSearch<Space><C-r><C-w><Enter>
+
+" Markdown
+Plugin 'kannokanno/previm'
+"let g:previm_open_cmd = 'open -a Firefox'
+"md as markdown {{{
+"autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+"autocmd FileType markdown call s:markdown_my_settings()
+"function! s:markdown_my_settings()
+"    nnoremap <silent><buffer>  <Leader>r :PrevimOpen<CR>
+"endfunction
+"}}}
+
+" colorscheme
+Plugin 'tomasr/molokai'
+
+
+call vundle#end()            " required
+filetype plugin indent on
+
+"
+"
+"
+
 set encoding=utf-8
+set t_Co=256
+hi Visual term=reverse cterm=reverse guibg=Grey
+colorscheme molokai
 
 set ambiwidth=double
 set number
@@ -64,134 +157,3 @@ set fileformats=unix,dos,mac
 if exists('&ambiwidth')
   set ambiwidth=double
 endif
-
-""
-""
-""
-set nocompatible
-filetype off
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-let g:vundle_default_git_proto='git'
-
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
-
-" unite
-Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-
-" ZenCoding
-Bundle 'mattn/emmet-vim'
-
-" vim-scripts repos
-Bundle 'L9'
-Bundle 'FuzzyFinder'
-Bundle 'vim-scripts/AutoComplPop'
-
-Bundle 'wincent/Command-T'
-Bundle 'thinca/vim-quickrun'
-Bundle 'vim-scripts/sudo.vim'
-Bundle 'tpope/vim-pathogen'
-Bundle 'itchyny/lightline.vim'
-
-" Tagber
-Bundle 'majutsushi/tagbar.git'
-nmap <C-t> :TagbarToggle<CR>
-Bundle 'scrooloose/nerdtree'
-nmap <silent> <C-e> :NERDTreeToggle<CR>
-
-" syntax
-Bundle 'scrooloose/syntastic'
-au BufRead,BufNewFile *.scss set filetype=sass
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_markdown_checkers = ['textlint']
-let g:syntastic_text_checkers = ['textlint']
-
-
-" syntax
-Bundle 'wavded/vim-stylus'
-Bundle 'digitaltoad/vim-jade'
-Bundle "pangloss/vim-javascript"
-Bundle "mxw/vim-jsx"
-Bundle 'derekwyatt/vim-scala'
-Bundle 'tpope/vim-rails.git'
-Bundle 'elixir-lang/vim-elixir'
-
-" for Python
-Bundle 'jmcantrell/vim-virtualenv'
-
-" open browser
-Bundle 'tyru/open-browser.vim'
-" カーソル下のURLをブラウザで開く
-nmap <Leader>o <Plug>(openbrowser-open)
-vmap <Leader>o <Plug>(openbrowser-open)
-nnoremap <Leader>g :<C-u>OpenBrowserSearch<Space><C-r><C-w><Enter>
-
-" Markdown
-Bundle 'kannokanno/previm'
-"let g:previm_open_cmd = 'open -a Firefox'
-"md as markdown {{{
-"autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
-"autocmd FileType markdown call s:markdown_my_settings()
-"function! s:markdown_my_settings()
-"    nnoremap <silent><buffer>  <Leader>r :PrevimOpen<CR>
-"endfunction
-"}}}
-
-" colorscheme
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'tomasr/molokai'
-Bundle 'vim-scripts/Zenburn'
-
-set t_Co=256
-"colorscheme zenburn
-"colorscheme desert
-colorscheme molokai
-hi Visual term=reverse cterm=reverse guibg=Grey
-
-Bundle 'Shougo/unite.vim'
-Bundle 'ujihisa/unite-colorscheme'
-Bundle 'thinca/vim-unite-history'
-Bundle 'taka84u9/unite-git'
-"" unite.vim {{{
-" The prefix key.
-nnoremap    [unite]   <Nop>
-nmap    <Space><Space> [unite]
-
-" unite.vim keymap
-nnoremap <silent> [unite]f :<C-u>Unite<Space>buffer<Space>file_mru<CR>
-"nnoremap <silent> [unite]d :<C-u>UniteWithBufferDir file<CR>
-nnoremap <silent> [unite]r :UniteResume<CR>
-
-" history
-nnoremap <silent> [unite]hs :Unite history/search<CR>
-nnoremap <silent> [unite]hy :Unite history/yank<CR>
-nnoremap <silent> [unite]hc :Unite history/command<CR>
-
-" git
-nnoremap <silent> [unite]gm :Unite git_modified<CR>
-nnoremap <silent> [unite]gc :Unite git_cached<CR>
-
-" vinarise
-let g:vinarise_enable_auto_detect = 1
- 
-" unite-build map
-nnoremap <silent> ,vb :Unite build<CR>
-nnoremap <silent> ,vcb :Unite build:!<CR>
-nnoremap <silent> ,vch :UniteBuildClearHighlight<CR>
-"" }}}
-
-filetype plugin indent on
